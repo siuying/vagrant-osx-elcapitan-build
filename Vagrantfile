@@ -1,7 +1,6 @@
 Vagrant.configure(2) do |config|
   config.vm.box = 'carbon/osx-elcapitan-10.11'
   config.vm.synced_folder ".", "/vagrant", disabled: true
-
   config.vm.provider "virtualbox" do |vb|
     vb.gui = true
     vb.memory = "8096"
@@ -11,6 +10,8 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", inline: <<-SHELL
     sudo -u vagrant /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     sudo -u vagrant brew install ruby
+    sudo -u vagrant brew install carthage
     sudo -u vagrant brew install gitlab-ci-multi-runner
+    sudo -u vagrant gem install bundler
   SHELL
 end
