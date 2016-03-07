@@ -8,10 +8,6 @@ Vagrant.configure(2) do |config|
     vb.customize ["modifyvm", :id, "--usbehci", "off"]
   end
 
-  config.push.define "atlas" do |push|
-    push.app = "siuying/osx-build"
-  end
-
   config.vm.provision "shell", inline: <<-SHELL
     sudo -u vagrant /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     sudo -u vagrant brew install ruby
