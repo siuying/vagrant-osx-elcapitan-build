@@ -6,6 +6,7 @@ Vagrant.configure(2) do |config|
     vb.gui = true
     vb.memory = "8096"
     vb.customize ["modifyvm", :id, "--usbehci", "off"]
+    vb.cpus = `sysctl -n hw.ncpu`.strip.to_i
 
     # setup serial so that we can install apps needed
     # http://zhiwei.li/text/2015/10/08/virtualbox%E5%AE%89%E8%A3%85el-capitan/
